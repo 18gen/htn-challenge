@@ -36,7 +36,7 @@ const LoginDrawer = () => {
   return (
     <div className="relative z-40">
       <button
-        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors duration-200"
+        className="px-3 mr-3 py-1 border-1 border-gray-600 rounded-xl hover:bg-[#e0dcd1] transition-colors duration-300 flex items-center gap-1"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isAuthenticated ? "Profile" : "Login"}
       >
@@ -63,28 +63,14 @@ const LoginDrawer = () => {
         aria-labelledby="drawer-title"
       >
         <button
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition-colors duration-200"
-          onClick={() => setIsOpen(false)}
-          aria-label="Close drawer"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+            onClick={() => setIsOpen(false)}
+            className="absolute top-5 right-4 p-2 rounded-full hover:bg-[#d6d2c8] transition-colors duration-200"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
+            <img src="/close.svg" alt="close popup" className="w-4 h-4" />
+          </button>
 
         {isAuthenticated ? (
-          <div className="mt-10">
+          <div>
             <h4
               id="drawer-title"
               className="text-xl font-semibold mb-4 text-gray-900"
@@ -92,14 +78,14 @@ const LoginDrawer = () => {
               Welcome, Hacker!
             </h4>
             <button
-              className="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors duration-200"
+              className="w-full text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors duration-200"
               onClick={logout}
             >
               Logout
             </button>
           </div>
         ) : (
-          <div className="mt-10">
+          <div>
             <h4
               id="drawer-title"
               className="text-xl font-semibold mb-4 text-gray-900"
@@ -108,7 +94,7 @@ const LoginDrawer = () => {
             </h4>
             <input
               type="text"
-              className="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+              className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -116,14 +102,14 @@ const LoginDrawer = () => {
             />
             <input
               type="password"
-              className="w-full p-2 mb-4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+              className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               aria-label="Password"
             />
             <button
-              className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors duration-200"
+              className="w-full text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 transition-colors duration-200"
               onClick={handleLogin}
             >
               Login
