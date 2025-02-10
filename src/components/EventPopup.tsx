@@ -1,6 +1,7 @@
 import React from "react";
 import { formatDate, formatTime } from "@/utils/eventUtils";
 import { Event } from "@/interfaces/event";
+import "@/styles/globals.css";
 
 interface EventPopupProps {
   event: Event;

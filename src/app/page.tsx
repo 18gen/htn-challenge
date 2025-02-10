@@ -1,6 +1,6 @@
 import React from "react";
 import EventList from "../components/EventList";
-import "@/app/globals.css";
+import "@/styles/globals.css";
 
 const HomePage = () => {
   return (

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "../context/AuthContext";
+import "@/styles/globals.css";
 
 const LoginDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);

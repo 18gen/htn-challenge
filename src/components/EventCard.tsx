@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { formatDate, formatTime, getEventColor } from "@/utils/eventUtils";
 import { Event } from "@/interfaces/event";
-import "@/app/globals.css";
+import "@/styles/globals.css";
 
 interface EventCardProps {
   event: Event;

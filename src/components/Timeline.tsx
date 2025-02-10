@@ -8,6 +8,7 @@ import {
   subHours,
 } from "date-fns";
 import { Event } from "@/interfaces/event";
+import "@/styles/globals.css";
 
 interface TimelineProps {
   events: Event[];

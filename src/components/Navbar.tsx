@@ -1,6 +1,6 @@
 import React from "react";
 import LoginDrawer from "./LoginDrawer";
-import "@/app/globals.css";
+import "@/styles/globals.css";
 
 const Navbar = () => {
   return (

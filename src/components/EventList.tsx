@@ -6,6 +6,7 @@ import EventCard from "./EventCard";
 import EventPopup from "./EventPopup";
 import { Event } from "@/interfaces/event";
 import { getEventColor } from "@/utils/eventUtils";
+import "@/styles/globals.css";
 
 const EventList = () => {
   const [events, setEvents] = useState<Event[]>([]);
