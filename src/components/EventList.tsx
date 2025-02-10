@@ -82,6 +82,13 @@ const EventList = () => {
     );
   };
 
+  const handleRelatedEventClick = (eventId: number) => {
+    const relatedEvent = events.find((event) => event.id === eventId);
+    if (relatedEvent) {
+      setSelectedEvent(relatedEvent);
+    }
+  };
+
   const eventTypeOptions = [
     { label: "Workshop", value: "workshop" },
     { label: "Tech Talk", value: "tech_talk" },
@@ -91,7 +98,7 @@ const EventList = () => {
   return (
     <div className="mb-8">
       <div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {/* Date Filter */}
           <div className="relative">
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -222,7 +229,9 @@ const EventList = () => {
       {selectedEvent && (
         <EventPopup
           event={selectedEvent}
+          events={events} // Pass the events array
           onClose={() => setSelectedEvent(null)}
+          onRelatedEventClick={handleRelatedEventClick}
         />
       )}
     </div>
