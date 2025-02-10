@@ -1,20 +1,31 @@
-import React from 'react';
-import EventCard from './EventCard';
-import { format, differenceInMinutes, startOfHour, addHours, subHours } from 'date-fns';
-import { Event } from '@/interfaces/event';
+import React from "react";
+import EventCard from "./EventCard";
+import {
+  format,
+  differenceInMinutes,
+  startOfHour,
+  addHours,
+  subHours,
+} from "date-fns";
+import { Event } from "@/interfaces/event";
 
 interface TimelineProps {
   events: Event[];
+  onEventClick: (event: Event) => void; // Add this prop
 }
 
 const hourHeight = 64; // Height per hour in pixels
 
-const Timeline = ({ events }: TimelineProps) => {
+const Timeline = ({ events, onEventClick }: TimelineProps) => {
   if (events.length === 0) return <div>No events scheduled.</div>;
 
   // Find the earliest start time and latest end time
-  const earliestStart = new Date(Math.min(...events.map(event => event.start_time)));
-  const latestEnd = new Date(Math.max(...events.map(event => event.end_time)));
+  const earliestStart = new Date(
+    Math.min(...events.map((event) => event.start_time)),
+  );
+  const latestEnd = new Date(
+    Math.max(...events.map((event) => event.end_time)),
+  );
 
   // Adjust the timeline to start at the beginning of the hour and end at the next full hour
   const timelineStart = subHours(startOfHour(earliestStart), 1); // Start 1 hour before the earliest full hour
@@ -22,9 +33,11 @@ const Timeline = ({ events }: TimelineProps) => {
 
   // Calculate the number of hours in the adjusted timeline
   const totalHours = differenceInMinutes(timelineEnd, timelineStart) / 60;
-  const hoursArray = Array.from({ length: totalHours }, (_, i) => addHours(timelineStart, i));
+  const hoursArray = Array.from({ length: totalHours }, (_, i) =>
+    addHours(timelineStart, i),
+  );
 
-  // group overlapping events
+  // Function to group overlapping events
   const groupOverlappingEvents = (events: Event[]) => {
     const groupedEvents: Event[][] = [];
     let currentGroup: Event[] = [];
@@ -59,9 +72,12 @@ const Timeline = ({ events }: TimelineProps) => {
       {/* Time Column */}
       <div className="w-14">
         {hoursArray.map((hour, index) => (
-            <div key={index} className="h-16 border-b border-gray-200 text-right text-sm pt-2 pr-3">
-            {format(hour, 'h a')}
-            </div>
+          <div
+            key={index}
+            className="h-16 border-b border-gray-200 text-right text-sm pt-2 pr-2.5"
+          >
+            {format(hour, "h a")}
+          </div>
         ))}
       </div>
 
@@ -84,8 +100,10 @@ const Timeline = ({ events }: TimelineProps) => {
               const end = new Date(event.end_time);
 
               // Position events relative to timelineStart
-              const top = differenceInMinutes(start, timelineStart) * (hourHeight / 60);
-              const height = differenceInMinutes(end, start) * (hourHeight / 60);
+              const top =
+                differenceInMinutes(start, timelineStart) * (hourHeight / 60);
+              const height =
+                differenceInMinutes(end, start) * (hourHeight / 60);
               const left = (eventIndex / group.length) * 100;
 
               return (
@@ -99,7 +117,11 @@ const Timeline = ({ events }: TimelineProps) => {
                     width: `${100 / group.length}%`,
                   }}
                 >
-                  <EventCard event={event} isList={false} onClick={() => null} />
+                  <EventCard
+                    event={event}
+                    isList={false}
+                    onClick={() => onEventClick(event)} // Pass the onClick handler
+                  />
                 </div>
               );
             })}

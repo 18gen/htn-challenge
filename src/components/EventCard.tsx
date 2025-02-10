@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { formatDate, formatTime, getEventColor } from '@/utils/eventUtils';
-import { Event } from '@/interfaces/event';
-import '@/app/globals.css';
+import React, { useRef, useEffect, useState } from "react";
+import { formatDate, formatTime, getEventColor } from "@/utils/eventUtils";
+import { Event } from "@/interfaces/event";
+import "@/app/globals.css";
 
 interface EventCardProps {
   event: Event;
@@ -24,11 +24,19 @@ const EventCard = ({ event, isList, onClick }: EventCardProps) => {
     <div ref={cardRef} className="h-full" onClick={onClick}>
       <div className="flex h-full">
         <div className={`${tag} rounded-l-md w-2 md:w-1.5 min-w-[4px]`} />
-        <div className={`${background} p-1.5 w-full rounded-r-md flex flex-col justify-between overflow-hidden`}>
-          <div className={`flex ${isList ? 'flex-col' : isShort ? 'flex-row items-center gap-2' : 'flex-col'} gap-1`}>
+        <div
+          className={`${background} p-1.5 w-full rounded-r-md flex flex-col justify-between overflow-hidden`}
+        >
+          <div
+            className={`flex ${isList ? "flex-col" : isShort ? "flex-row items-center gap-2" : "flex-col"} gap-1`}
+          >
             <h6 className="card-title fw-bold truncate flex items-center gap-1 max-w-full">
-              {event.permission === 'private' && (
-                <img src="/lock.svg" alt="Private Event" className="w-4 h-4 inline" />
+              {event.permission === "private" && (
+                <img
+                  src="/lock.svg"
+                  alt="Private Event"
+                  className="w-4 h-4 inline"
+                />
               )}
               <span className="truncate" title={event.name}>
                 {event.name}

@@ -1,5 +1,5 @@
-'use client';
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+"use client";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = (username: string, password: string) => {
-    if (username === 'hacker' && password === 'htn2025') {
+    if (username === "hacker" && password === "htn2025") {
       setIsAuthenticated(true);
       return true;
     }
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };

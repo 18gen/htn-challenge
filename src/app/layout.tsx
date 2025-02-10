@@ -1,8 +1,8 @@
-import React from 'react';
-import { AuthProvider } from '../context/AuthContext';
-import Navbar from '../components/Navbar';
-import '@/app/globals.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { AuthProvider } from "../context/AuthContext";
+import Navbar from "../components/Navbar";
+import "@/app/globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -24,7 +24,9 @@ export const metadata: Metadata = {
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <AuthProvider>
           <Navbar />
           <main>{children}</main>
