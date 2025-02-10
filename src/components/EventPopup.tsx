@@ -1,5 +1,5 @@
 import React from "react";
-import { formatDate, formatTime } from "@/utils/eventUtils";
+import { formatDate, formatTime, getEventColor } from "@/utils/eventUtils";
 import { Event } from "@/interfaces/event";
 import "@/styles/globals.css";
 
@@ -9,28 +9,34 @@ interface EventPopupProps {
 }
 
 const EventPopup = ({ event, onClose }: EventPopupProps) => {
+  const { tag, background } = getEventColor(event.event_type);
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg p-6 max-w-2xl w-full">
-        <h2 className="text-2xl font-bold mb-4">{event.name}</h2>
-        <p className="text-sm truncate">
+    <div className="z-50 fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+      <div className="max-h-[calc(100%-1rem)] rounded-3xl bg-[#fbf6ea] p-6 max-w-2xl w-full">
+        <button onClick={onClose}>
+          <img
+          src="/close.svg"
+          alt="close popup"
+          className="w-4 h-4 right-3"
+        />
+        </button>
+        <h2 className="text-lg md:text-2xl font-bold mb-1 align-middle">
+          <span className={`inline-block w-4 h-4 rounded-sm mr-2 ${tag}`}/>
+          {event.name}
+        </h2>
+        <p className="text-xs md:text-sm truncate">
           {formatDate(event.start_time)}・{formatTime(event.start_time)} -{" "}
           {formatTime(event.end_time)}
         </p>
-        <p className="text-gray-700 mb-4">{event.description}</p>
-        <p className="text-gray-600 mb-2">
-          <strong>Type:</strong> {event.event_type}
-        </p>
-        <p className="text-gray-600 mb-2">
-          <strong>Speakers:</strong>{" "}
-          {event.speakers.map((speaker) => speaker.name).join(", ")}
-        </p>
-        <button
-          onClick={onClose}
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          Close
-        </button>
+        <p className="truncate mt-1">
+              {event.speakers.map((speaker, index) => (
+                <span key={index} className="badge bg-dark text-light">
+                  🎙️ {speaker.name}
+                </span>
+              ))}
+            </p>
+        <p className="text-xs md:text-sm text-gray-700 py-2">{event.description}</p>
+        
       </div>
     </div>
   );

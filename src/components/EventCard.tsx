@@ -50,8 +50,8 @@ const EventCard = ({ event, isList, onClick }: EventCardProps) => {
           {isList && (
             <div className="truncate mt-1">
               {event.speakers.map((speaker, index) => (
-                <span key={index} className="badge bg-light text-dark">
-                  🎤 {speaker.name}
+                <span key={index} className="badge bg-[#fbf6ea] text-dark">
+                  🎙️ {speaker.name}
                 </span>
               ))}
             </div>
