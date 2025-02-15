@@ -1,12 +1,12 @@
 import React from "react";
 import { formatDate, formatTime, getEventColor } from "@/utils/eventUtils";
-import { Event } from "@/interfaces/event";
+import { TEvent } from "@/interfaces/event";
 import EventCard from "./EventCard"; // Import the SmallEventCard
 import "@/styles/globals.css";
 
 interface EventPopupProps {
-  event: Event;
-  events: Event[];
+  event: TEvent;
+  events: TEvent[];
   onClose: () => void;
   onRelatedEventClick: (eventId: number) => void;
 }
@@ -72,13 +72,14 @@ const EventPopup = ({ event, events, onClose, onRelatedEventClick }: EventPopupP
           {event.related_events.length > 0 && (
             <div className="mt-2">
               <h3 className="text-md font-semibold mb-2">Related Events</h3>
-              <div key="related-event" className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {event.related_events.map((relatedEventId) => {
                   const relatedEvent = events.find((e) => e.id === relatedEventId);
                   return relatedEvent ? (
                     <EventCard
                       event={relatedEvent}
                       isList={true}
+                      key={relatedEvent.id}
                       onClick={() => onRelatedEventClick(relatedEventId)}
                     />
                   ) : null;

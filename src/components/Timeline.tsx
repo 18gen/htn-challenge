@@ -7,12 +7,12 @@ import {
   addHours,
   subHours,
 } from "date-fns";
-import { Event } from "@/interfaces/event";
+import { TEvent } from "@/interfaces/event";
 import "@/styles/globals.css";
 
 interface TimelineProps {
-  events: Event[];
-  onEventClick: (event: Event) => void; // Add this prop
+  events: TEvent[];
+  onEventClick: (event: TEvent) => void; // Add this prop
 }
 
 const hourHeight = 64; // Height per hour in pixels
@@ -39,9 +39,9 @@ const Timeline = ({ events, onEventClick }: TimelineProps) => {
   );
 
   // Function to group overlapping events
-  const groupOverlappingEvents = (events: Event[]) => {
-    const groupedEvents: Event[][] = [];
-    let currentGroup: Event[] = [];
+  const groupOverlappingEvents = (events: TEvent[]) => {
+    const groupedEvents: TEvent[][] = [];
+    let currentGroup: TEvent[] = [];
 
     events.sort((a, b) => a.start_time - b.start_time);
 

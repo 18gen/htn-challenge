@@ -4,12 +4,12 @@ import { useAuth } from "../context/AuthContext";
 import Timeline from "./Timeline";
 import EventCard from "./EventCard";
 import EventPopup from "./EventPopup";
-import { Event } from "@/interfaces/event";
+import { TEvent } from "@/interfaces/event";
 import { getEventColor } from "@/utils/eventUtils";
 import "@/styles/globals.css";
 
 const EventList = () => {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<TEvent[]>([]);
   const [viewType, setViewType] = useState<"list" | "calendar">("list");
   const [filterDate, setFilterDate] = useState<string>("all");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([
@@ -19,7 +19,7 @@ const EventList = () => {
   ]);
   const [orderBy, setOrderBy] = useState<"name" | "time">("time");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<TEvent | null>(null);
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
@@ -27,11 +27,11 @@ const EventList = () => {
       .then((response) => response.json())
       .then((data) => {
         const filteredEvents = data.filter(
-          (event: Event) => isAuthenticated || event.permission === "public",
+          (event: TEvent) => isAuthenticated || event.permission === "public",
         );
         setEvents(
           filteredEvents.sort(
-            (a: Event, b: Event) => a.start_time - b.start_time,
+            (a: TEvent, b: TEvent) => a.start_time - b.start_time,
           ),
         );
       })
