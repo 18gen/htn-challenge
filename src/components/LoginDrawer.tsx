@@ -63,11 +63,11 @@ const LoginDrawer = () => {
         aria-labelledby="drawer-title"
       >
         <button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-5 right-4 p-2 rounded-full hover:bg-[#d6d2c8] transition-colors duration-200"
-          >
-            <img src="/close.svg" alt="close popup" className="w-4 h-4" />
-          </button>
+          onClick={() => setIsOpen(false)}
+          className="absolute top-5 right-4 p-2 rounded-full hover:bg-[#d6d2c8] transition-colors duration-200"
+        >
+          <img src="/close.svg" alt="close popup" className="w-4 h-4" />
+        </button>
 
         {isAuthenticated ? (
           <div>

@@ -17,4 +17,4 @@ export type TEvent = {
   public_url?: string;
   private_url: string;
   related_events: number[];
-}
+};

@@ -11,7 +11,12 @@ interface EventPopupProps {
   onRelatedEventClick: (eventId: number) => void;
 }
 
-const EventPopup = ({ event, events, onClose, onRelatedEventClick }: EventPopupProps) => {
+const EventPopup = ({
+  event,
+  events,
+  onClose,
+  onRelatedEventClick,
+}: EventPopupProps) => {
   const { tag, background } = getEventColor(event.event_type);
 
   return (
@@ -74,7 +79,9 @@ const EventPopup = ({ event, events, onClose, onRelatedEventClick }: EventPopupP
               <h3 className="text-md font-semibold mb-2">Related Events</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {event.related_events.map((relatedEventId) => {
-                  const relatedEvent = events.find((e) => e.id === relatedEventId);
+                  const relatedEvent = events.find(
+                    (e) => e.id === relatedEventId,
+                  );
                   return relatedEvent ? (
                     <EventCard
                       event={relatedEvent}
