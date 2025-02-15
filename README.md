@@ -4,8 +4,8 @@
 [![Write-Up](https://img.shields.io/badge/Write%20Up-Notion-blue)](https://gen18.notion.site/Write-Up-HTN-Frontend-194ee429f8918073b192c23bcc88a4d6)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/14d583ef-800c-4ae7-a6d4-30b37606bcb0" width="500" alt="Screenshot 1" style="margin-right: 10px;" />
-  <img src="https://github.com/user-attachments/assets/9702fa3e-3115-49b1-bbc1-1d9cf3ce85d7" width="500" alt="Screenshot 2" style="margin-left: 10px;" />
+  <img src="https://github.com/user-attachments/assets/14d583ef-800c-4ae7-a6d4-30b37606bcb0" width="350" alt="Screenshot 1" style="margin-right: 10px;" />
+  <img src="https://github.com/user-attachments/assets/9702fa3e-3115-49b1-bbc1-1d9cf3ce85d7" width="350" alt="Screenshot 2" style="margin-left: 10px;" />
 </p>
 
 ---
