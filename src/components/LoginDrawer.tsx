@@ -95,7 +95,7 @@ const LoginDrawer = () => {
             <input
               type="text"
               className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-              placeholder="Username"
+              placeholder="Username: hacker"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               aria-label="Username"
@@ -103,7 +103,7 @@ const LoginDrawer = () => {
             <input
               type="password"
               className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-              placeholder="Password"
+              placeholder="Password: htn2025"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               aria-label="Password"
