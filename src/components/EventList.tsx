@@ -102,7 +102,7 @@ const EventList = () => {
           {/* Date Filter */}
           <div className="relative">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Date
+              🗓️ Date
             </label>
             <select
               className="bg-transparent focus:outline-none"
@@ -121,7 +121,7 @@ const EventList = () => {
           {/* Search Input */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Search
+              🔍 Search
             </label>
             <input
               type="text"
@@ -131,23 +131,6 @@ const EventList = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-
-          {/* Order By (only in list view) */}
-          {viewType === "list" && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Order By
-              </label>
-              <select
-                className="bg-transparent focus:outline-none"
-                onChange={(e) => setOrderBy(e.target.value as "name" | "time")}
-                value={orderBy}
-              >
-                <option value="time">⏰ Time</option>
-                <option value="name">📛 Name</option>
-              </select>
-            </div>
-          )}
         </div>
       </div>
 
@@ -203,6 +186,23 @@ const EventList = () => {
           );
         })}
       </div>
+
+      {/* Order By (only in list view) */}
+      {viewType === "list" && (
+          <div className="flex flew-row mb-3 ml-2">
+            <label className="block text-md font-medium text-gray-900 pr-2">
+              Order By
+            </label>
+            <select
+              className="bg-transparent focus:outline-none"
+              onChange={(e) => setOrderBy(e.target.value as "name" | "time")}
+              value={orderBy}
+            >
+              <option value="time">🕐 Time</option>
+              <option value="name">🏷️ Name</option>
+            </select>
+          </div>
+      )}
 
       {/* Event List or Timeline */}
       <div className="overflow-y-auto max-h-[640px]">
